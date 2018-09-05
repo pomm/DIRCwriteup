@@ -1,0 +1,60 @@
+\subsection{Physical processes}
+
+The general physical properties of the media (such as density, atomic weights, atomic numbers etc.) are used by Geant4 to simulate interactions of the particles with detector materials (e.g. Bremsstrahlung, ionization, production of secondary particles). If a material has, in addition, Cherenkov properties, then a particle can emit Cherenkov photons inside this material. The expectation value of the number of Cherenkov photons emitted per unit of trajectory $dN/dx$ is calculated according to the Frank-Tamm equation. During the propagation process of a charged particle inside the material with Cherenkov properties the number of photons produced within each step is generated according to a Poisson distribution with the mean of $\langle n \rangle = L_{step} \cdot dN/dx$. After the photons are produced they are propagated individually through the detector materials. The particles are transported inside the detector volume in an iterative process to discrete positions with a certain step size. At each of these positions a detector-specific routine is called by the Geant4 in order to process the simulated information inside its sensitive volumes. There, the current particle state (e.g. momentum, type, and mother-daughter relation) and the relevant processes during the current step (e.g. reflection, refraction) are available.
+
+A high momentum charged particle produces at the order of $1000$ photons per cm of fused silica in the wavelength range $(300-700)$ nm. Only $30-60$ of them are expected to be detected. Typical Cherenkov photon energies are at the order of few eV. For proper estimation of the detector performance it is very important to predict realistic photon yields. Common reasons why a Cherenkov photon is not detected are the following:
+
+\begin{itemize}
+\item The material, where the Cherenkov photons is produced or currently propagating, might be non-transparen for the given wavelength -- the photon stops;
+\item The photon does not satisfy the total internal reflection condition at the border between the radiator and the air around (and other interfaces) -- the photon leaves the radiator (or, more generally, the optical system of the detector) and is lost;
+\item Some photons are reflected back on an interface between media with different refraction indices -- the photon is trapped inside some volume (or group of volumes);
+\item The photon is absorbed in the material after it propagates a certain distance (the absorption properties of each material are defined by the absorption length as a function of the wavelength) -- the photon stops;
+\item The photon is not detected because of the photon detection efficiency of the sensors (quantum efficiency for H12700 MaPMTs is shown in Fig.~\ref{pic:qe}) or the transport efficiency (described below)  -- the photon reaches the photosensor, but is not detected.
+\end{itemize}
+
+The physical processes in the materials are simulated by Geant4 based on the Cherenkov properties. The processes of total internal reflection, chromatic dispersion, transmission, and absorption of Cherenkov photons inside the optical elements of the GlueX DIRC are treated by Geant4, too.
+
+A fraction of Cherenkov photons emitted by a charged particle, gets trapped inside the radiator due to the total internal reflection effect. They need to be transported from the origin to the readout end of the radiator bar. Cherenkov photons usually undergo at the order of several tens to several hundreds internal reflections inside a long BABAR DIRC bars on the way towards the readout end. The sides of the radiator in the reality are not perfect, and surface roughness causes a photon to get scattered in a random direction or escape from the radiator. In the simulation the radiator sides are perfectly polished leading to the fraction of transported photons to be $100\%$. In general, there are two ways to implement realistic transport efficiency into the simulation:
+
+\begin{itemize}
+\item The functionality of Geant4 (unlike Geant3) allows definition of an ``optical surface'' between two media with custom properties such as reflectivity and roughness. Then at each reflection off the radiator side, Geant4 decides according to the surface properties, to stop the photon or continue its transportation. It might be not straightforward to implement experimental results of the surface roughness measurements and make sure the simulation agrees with the measured data.
+\item Transport efficiency can be calculated at the production stage for each photon based on the probability for a single reflection and the total number of reflections off the sides. This speeds up the simulation. Also, the measured surface roughness, which is usually based on the resulting decrease in the light intensity after $N$ reflections, is easy to implement.
+\end{itemize}
+
+We decided to follow the second method and apply the transport efficiency at the production stage as the following. The probability $P$ for a single reflection on the radiator side depends on the photon wavelength $\lambda$, incident angle of the photon $\alpha$, refraction index $n$, and the surface roughness $r$. According to scalar theory~\cite{scalar}:
+
+\begin{equation}
+P \approx  1 - \left( \frac{4\pi \cdot r \cdot \cos(\alpha) \cdot n(\lambda)}{\lambda} \right)^{2}, r \ll \lambda
+\end{equation}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.8\textwidth]{pics/psurf.png}
+\caption{\label{pic:sur}
+Reflection coefficient $P$ as a function of the wavelength and incident angle of the Cherenkov photon.
+}
+\end{figure}
+
+$P(\lambda,\alpha)$ is illustrated in Fig.~\ref{pic:sur}. The probability to survive the transpotation through the radiator can be calculated as $P_{total} = P^{N}$. Here $P_{total}$ is the transport efficiency for a given photon, and $N$ is the total number of reflections inside the radiator. We used experimental data of the transport efficiency, which agrees with the scalar theory for roughness value of $r \approx 5 A$~\cite{roughness}. Fig.~\ref{pic:tra} illustrates the impact of the transport efficiency on the photon yield for tracks hitting the bar (bar number 24 or 0 in Fig.~\ref{pic:dirc2}) closest to the beamline in different points along the $x$ axis. The effect is larger in the middle and decreases towards the ends of the bar. This correlates with the orientation of the Cherenkov cone inside the radiator: when a charged particle hits the middle of the bar, the Cherenkov cone is oriented perpendicularly to it, and photons have more reflections on the radiator sides than for the case, when the charged particle goes shallowly through the bar.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.8\textwidth]{pics/transport.png}
+\caption{\label{pic:tra}
+Impact of the transport efficiency on the photon yield. The study is based on $100k$ of $h'(2600)$ events. The photon yield is shown for the bar closest to the beamline (bar number 24 or 0 in Fig.~\ref{pic:dirc2}).
+}
+\end{figure}
+
+The photon sensors are implemented in the simulation as a set of functional layers (see Fig.~\ref{pic:struct}). Propagation of Cherenkov photons through them is handled by Geant4. The detection efficiency, represented by the quantum efficiency of the photosensors (see Fig.~\ref{pic:qe}), is applied at the production stage to avoid tracing photons which are not going to be detected.
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.5\textwidth]{pics/qe.png}
+\caption{\label{pic:qe}
+Quantum efficiency of photosensors Hamamatsu H12700. The red line shows a fit to the data points, extracted from the data sheet.
+}
+\end{figure}
+
+The average bar dimensions are $35 \times 17.25 \times 4900 $ mm$^3$. The real measured bar sizes are being implemented into the geometry. 
+
+The deterioration effects caused by imperfections of the physical shape of the radiators are not taken into account. The radiator bars in the detector simulation are perfect parallelepipeds, unlike in reality. Therefore, systematic smearing of the photon direction at every reflection inside the real radiator, which introduces an additional error to the reconstructed photon direction and therefore, to the obtained Cherenkov angle, is not (yet) taken into account.

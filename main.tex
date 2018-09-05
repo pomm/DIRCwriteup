@@ -1,0 +1,99 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage{amsmath}
+\usepackage{commath}
+\usepackage{url}
+\usepackage{cite}
+\usepackage{color}
+\usepackage{multirow}
+\usepackage[margin=1.25in]{geometry}
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{authblk}
+\graphicspath{{./graphics/}}
+
+\usepackage{subfiles}
+\usepackage{blindtext}
+
+\newcommand\T{\rule{0pt}{2.6ex}}       % Top strut
+\newcommand\B{\rule[-1.2ex]{0pt}{0pt}} % Bottom strut
+
+\title{GlueX DIRC Writeup}
+
+\author[1]{M.~Patsyuk\thanks{mpatsyuk@mit.edu}}
+\author[2]{R.~Dzhydaglo\thanks{r.dzhygadlo@gsi.de}}
+\affil[1]{\small{Massachusetts Institute of Technology, Cambridge, USA}}
+\affil[2]{\small{GSI Helmholtzzentrum f{\"u}r Schwerionenforschung GmbH, Darmstadt, Germany}}
+
+\date{\vspace{-5ex}}
+
+\begin{document}
+
+\maketitle
+
+\input{abstract.tex}
+
+\vspace{8cm}
+\begin{center}
+Version 1.0
+\end{center}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\input{detectorDesign.tex}
+
+\section{Simulation}
+%\label{sec:sim}
+
+A detailed physical simulation of was developed using Geant4 (\texttt{hdgeant4} package of the GlueX software). This chapter describes the details of the detector simulation, including the geometry, materials, and physical processes relevant for Cherenkov photons propagation. 
+
+\input{geometry.tex}
+
+\input{physProc.tex}
+
+\input{materials.tex}
+
+\input{signal.tex}
+
+\section{Reconstruction}
+
+Three reconstruction approaches are being implemented in the GlueX Software. The geometrical reconstruction is fully implemented and can be used at the beginning of the DIRC operation. The time-based imaging  needs some development effort. The KDE-based reconstruction was very useful for the design work. This method is to be implemented into the software.
+
+\input{geometrical}
+
+\input{loglikelihoods}
+
+\input{ti}
+
+\subsection{KDE-based Reconstruction}
+
+\subsection{Comparison of Performance}
+
+\newpage
+
+\begin{thebibliography}{1}
+\bibitem{dirc} F.~Barbosa et al., ``The GlueX DIRC detector'', NIM \textbf{A} 876 (2017) 69.
+\bibitem{gluex1} GlueX Collaboration, ``Mapping the Spectrum of Light Quark Mesons and Gluonic Excitations with Linearly Polarized Photons'', Jefferson Lab PAC 30 Proposal, 2006.
+\bibitem{gluex2} A.~AlekSejevs et al., GlueX Collaboration, \url{arXiv:1305.1523}.
+\bibitem{gluex3} M.~Dugger et al., GlueX Collaboration, \url{arXiv:1408.0215}. 
+\bibitem{bdirc1} I.~ Adam et al., NIM \textbf{A} 538 (2005) 235.
+\bibitem{fdirc} B.~Dey et al., NIM \textbf{A} 775 (2015) 112.
+\bibitem{scalar} H.~Bennet, J.~Elson, and J.~Bennet ``Scattering from optical surfaces'' Vol. 7. Applied Optics and Optical Engineering. Academic Press New York, 1979.
+\bibitem{roughness} J.~Cohen-Tanugi et al., ``Optical properties of the DIRC fused silica Cherenkov radiator'', NIM \textbf{A} 515 (2003) 680. 
+\bibitem{Epotek} Epoxy Technology, Inc. 14 Fortune Drive Billerica, MA 01821.
+\bibitem{EpotekData} BABAR DIRC Note 140 ``Measurement of Epotek-301-2 Optical Glue Refraction Index and Reflectivity from Epotek-301-2/Fused Silica Interface'', J. Va'vra (2001).
+\bibitem{pcpaper} D.~Motta, S.~Sch{\"o}nert ``Optical properties of bialkali photocathodes'' NIM \textbf{A} 539 (2005) 217. 
+\bibitem{water} A.~Morel ``Optical properties of Pure Water and Pure Sea Water'', Academic Press, 1974.
+\bibitem{water2} R.~R{\"o}ttgers, ``Measurements of inherent optical properties of pure water'', Technical note, GKSS Forschungszentrum in der Helmholtz Gemeindschaft.
+\bibitem{tdr} GlueX Collaboration, ``GlueX DIRC Technical Design Report'', 2015  
+\bibitem{staric2} M.~Staric et al., ``Pattern recognition for the time-of-propagation counter'', NIM \textbf{A} 639 (2011) 252
+\bibitem{staric3} M.~Static et al., ``Likelihood analysis of patterns in a time-of-propagation (TOP) counter'', NIM \textbf{A} 595 (2008) 252.
+\end{thebibliography}
+
+
+\end{document}
