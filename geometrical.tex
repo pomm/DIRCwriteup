@@ -72,4 +72,31 @@ The Cherenkov angle resolution for a track $\sigma_{\theta_{C}}$ can be approxim
 
 \noindent where $\sigma_{tr}$ is the tracking resolution, defined by the tracking system (is estimated to be at the order of $1$ mrad~\cite{tdr}), $\sigma_{C}$ -- single photon Cherenkov angle resolution, $N_{\gamma}$ -- number of detected photons per track (based on the simulation it is expected to be between 30 and 60).
 
-There are two ways to perform the PID with the geometric reconstruction. The first way is to extract the reconstructed Cherenkov angle for a charged particle and compare it to the expected values for different hypotheses. The second method is the direct likelihood test described in the next section.
+There are two ways to perform the PID with the geometric reconstruction. The first way is to extract the reconstructed Cherenkov angle for a charged particle and compare it to the expected values for different hypotheses. The second method is the direct likelihood test.
+
+Log likelihood method of PID compares the measured DIRC signal to the expected signals for different particle hypotheses. In the geometrical reconstruction, each of $N$ hit pixels has a set of $N_{amb}$ Cherenkov angles. The extended log likelihood probability $\log\mathcal{L}$ for a given charged particle hypothesis $h$ ($h = e, \mu, \pi, K, p$) can be defined as~\cite{staric2}:
+
+\begin{equation}
+\log\mathcal{L}_{h} = \sum_{i=1}^{N} \sum_{j=1}^{N^{amb}_{i}} \log \Big( S_{h}^{ij} + B_{h}^{ij} \Big) + \log P_{N}(N_{e}),
+\label{eq:ll}
+\end{equation}
+
+\noindent where $S^{h}_{ij}$ is the signal distribution for the hypothesis $h$, which is the expected value of the Cherenkov angle for the given particle type and momentum, smeared with the measured single photon Cherenkov angle resolution. The distribution is normalized to have the maximum value at $1$. $B^{h}_{ij}$ is the distribution for background (usually described by a linear function). The function $S^{h}_{ij} + B^{h}_{ij}$ for $h = $ kaon and $h = $ pion obtained from the simulation is shown in Fig.~\ref{pic:spr}. $N_{e} = N_{h} + N_{B}$ is the expected number of detected photons, being a sum of the expected number of signal photons $N_{h}$ for hypothesis $h$ and the expected number of background photons, $N_{B}$. The second term in Eq.~\ref{eq:ll} is the Poisson probability to obtain $N$ photons if the mean is $N_{e}$.
+%$P_{N}(N)$ is the probability to get the measured number of Cherenkov photons for this hypothesis based on the distribution of the number of expected photons.
+During reconstruction, the log likelihood values for the reconstructed Cherenkov photons are summed up for all hit pixels (including all ambiguities). An example of the result is shown in Fig.~\ref{pic:sepLUT}.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[clip, trim=0cm 0cm 0cm 0.7cm, width=0.8\textwidth]{pics/hLnDiff.pdf}
+\caption{\label{pic:sepLUT}
+Log likelihood difference between kaons (red) and pions (blue) with momenta of $4$ GeV/c, and direction defined by $\theta = 4^{\circ}$ and $\phi = 90^{\circ}$ is 4.95 s.d.
+}
+\end{figure}
+
+The separation $S$ between two hypotheses can be calculated based on the difference in log likelihoods:
+
+\begin{equation}
+S = \frac{m_{1}-m_{2}}{(\sigma_{1} + \sigma_{2})/2},
+\end{equation}
+
+\noindent where $m_{1}$ and $m_{2}$ are the mean values of the log likelihood difference for two hypotheses, and the denominator shows the average standard deviation assuming the log likelihood distributions are described by Gauss functions with $\sigma_{1}$ and $\sigma_{2}$.
