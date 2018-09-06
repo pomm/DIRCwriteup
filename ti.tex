@@ -10,18 +10,18 @@ The expected photon arrival times can be calculated in different ways:
 \item In beam tests, when the external PID is available, the timing spectra can be extracted from the data.
 \end{itemize}
 
-The first approach was used to evaluate the time-based imaging method for GlueX DIRC.
+The first approach was used to evaluate the time-based imaging method for \gluex DIRC.
 
 \begin{figure}[!h]
 \centering
 \includegraphics[width=0.55\textwidth]{pics/kaonsTI.png} \hspace{0.05\textwidth} \includegraphics[width=0.35\textwidth]{pics/LeftPix.png} \\
 \includegraphics[width=0.55\textwidth]{pics/pionsTI.png} \hspace{0.05\textwidth} \includegraphics[width=0.35\textwidth]{pics/rightPix.png} 
 \caption{\label{pic:hitpatKpi}
-Hit pattern for kaons (upper left) and pions (bottom left) with momentum of $2$ GeV/c and direction defined by $\theta = 1.2^{\circ}$ and $\phi = 90^{\circ}$ angles. Black circles mark two pixels, for which timing spectra are shown on the right. The timing spectra for pions (red) and kaons (blue) for the left circled pixel are shown on the upper left plot, and for the right circled pixel -- on the lower right plot.
+Hit pattern for kaons (upper left) and pions (bottom left) with momentum of $2$ {\gev}/c and direction defined by $\theta = 1.2$\mydeg and $\phi = 90$\mydeg angles. Black circles mark two pixels, for which timing spectra are shown on the right. The timing spectra for pions (red) and kaons (blue) for the left circled pixel are shown on the upper left plot, and for the right circled pixel -- on the lower right plot.
 }
 \end{figure}
 
-Figure~\ref{pic:hitpatKpi} illustrates the principle of the time imaging  algorithm. The left column shows cumulative $(x, y)$ hit patterns for pions and kaons with momentum of $2$ GeV/c and direction defined by $\theta = 1.2^{\circ}$ and $\phi = 90^{\circ}$ angles. The upper hit pattern (kaons) is clearly shifted downward by about half of one PMT with respect to the lower one (pions) illustrating the fact, that these two hypotheses can be well separated. The black circles mark two pixels on the photodetection plane, for which the reference timing spectra are shown on the right. The upper right plot shows time distribution for the left circled pixel, and the lower right plot shows time distribution for the right circled pixel. The red color corresponds to pions, and blue -- to kaons.
+Figure~\ref{pic:hitpatKpi} illustrates the principle of the time imaging  algorithm. The left column shows cumulative $(x, y)$ hit patterns for pions and kaons with momentum of $2$ {\gev}/c and direction defined by $\theta = 1.2$\mydeg and $\phi = 90$\mydeg angles. The upper hit pattern (kaons) is clearly shifted downward by about half of one PMT with respect to the lower one (pions) illustrating the fact, that these two hypotheses can be well separated. The black circles mark two pixels on the photodetection plane, for which the reference timing spectra are shown on the right. The upper right plot shows time distribution for the left circled pixel, and the lower right plot shows time distribution for the right circled pixel. The red color corresponds to pions, and blue -- to kaons.
  
 The DIRC measures the arrival times $t_{i}$ and positions $(x_{i}, y_{i})$ of the $N$ Cherenkov photons detected on the photodetection plane. The extended log likelihood probability $\log\mathcal{L}$ for a given charged particle hypothesis $h$ ($h = e, \mu, \pi, K, p$) can be 
 defined as~\cite{staric2}:
@@ -47,20 +47,16 @@ The normalizations of $S_{h} (x_{i}, y_{i}, t_{i})$ and $B(x_{i}, y_{i}, t_{i})$
 
 \noindent where the sum runs over all channels $n_{ch}$ of the photon detector array, $(x_{j}, y_{j})$ being detector coordinates, and the integration is performed over the full range $t_{m}$ of the time-of-arrival measurement.
 
-An example of the log likelihood difference is shown in Fig.~\ref{pic:sepTI}.
+An example of \deltall is shown in Fig.~\ref{pic:sepTI}.
 
 \begin{figure}[!h]
 \centering
 \includegraphics[width=0.43\textwidth]{pics/sepTI300.png} \hspace{0.5cm} \includegraphics[width=0.52\textwidth]{pics/sepTI1000.png}
 \caption{\label{pic:sepTI}
-The log likelihood difference between kaons (red) and pions (blue) with momenta of $4$ GeV/c, and direction defined by $\theta = 4^{\circ}$ and $\phi = 90^{\circ}$. The left plot corresponds to the timing resolution of $300$ ps and it shows 6.4 s.d separation between kaons and pions. The right plot corresponds to $1$ ns timing resolution and it shows 3.9 s.d. separation between kaons and pions. \newline \footnotesize{Different $x$ axis scales are an artefact of the development work: the difference is due to the fact that the log likelihood for the left plot did not have $N$ detected photons in the denominator, and the right plot did have. The number of detected photons for high momentum particles is the same for pions and kaons, therefore this issue does not influence the performance for the given case. }
+\deltall between kaons (red) and pions (blue) with momenta of $4$ {\gev}/c, and direction defined by $\theta = 4$\mydeg and $\phi = 90$\mydeg. The left plot corresponds to the timing resolution of $300$ ps and it shows 6.4 s.d separation between kaons and pions. The right plot corresponds to $1$ ns timing resolution and it shows 3.9 s.d. separation between kaons and pions. \newline \footnotesize{Different $x$ axis scales are an artefact of the development work: the difference is due to the fact that the log likelihood for the left plot did not have $N$ detected photons in the denominator, and the right plot did have. The number of detected photons for high momentum particles is the same for pions and kaons, therefore this issue does not influence the performance for the given case. }
 }
 \end{figure}
 
-The separation $S$ between two hypotheses can be calculated based on the difference in log likelihoods (see previous section).
+The separation $S$ between two hypotheses can be calculated based on the \deltall (see previous section).
 
 The time imaging reconstruction method is sensitive to the single photon timing resolution. Indeed, the timing information is used here directly, unlike for the geometrical algorithm, where only coarse timing information is needed to cut out some solutions of the reconstructed Cherenkov angle. Figure~\ref{pic:sepTI} shows separation between kaons and pions for two values of the single photon timing resolutions. The single photon timing resolution of 1 ns is approximately the value we are getting experimentally with the PMTs and the electronics boards.
-
-\subsection{KDE-based Reconstruction}
-
-\subsection{Comparison of Performance}

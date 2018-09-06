@@ -19,10 +19,24 @@
 \newcommand\T{\rule{0pt}{2.6ex}}       % Top strut
 \newcommand\B{\rule[-1.2ex]{0pt}{0pt}} % Bottom strut
 
+\newcommand{\gluex}{{\sc GlueX}\xspace}
+\newcommand{\geant}{{\sc Geant}\xspace}
+\newcommand{\babar}{BaBar\xspace}
+\newcommand{\mydeg}{$^{\circ}$\xspace}
+\newcommand{\myfar}{$^{\circ}$F\xspace}
+\newcommand{\mycel}{$^{\circ}$C\xspace}
+\newcommand{\eqdeg}{^{\circ}\xspace}
+\newcommand{\deltall}{$\Delta$LL\xspace}
+\newcommand{\bboson}{\emph{B} boson\xspace}
+\newcommand{\bbosons}{\emph{B} bosons\xspace}
+\newcommand{\gev}{~GeV\xspace}
+\newcommand{\mev}{~MeV\xspace}
+
 \title{GlueX DIRC Writeup}
 
 \author[1]{M.~Patsyuk\thanks{mpatsyuk@mit.edu}}
 \author[2]{R.~Dzhydaglo\thanks{r.dzhygadlo@gsi.de}}
+\author[1]{J.~M.~Hardin\thanks{jmhardin@mit.edu}}
 \affil[1]{\small{Massachusetts Institute of Technology, Cambridge, USA}}
 \affil[2]{\small{GSI Helmholtzzentrum f{\"u}r Schwerionenforschung GmbH, Darmstadt, Germany}}
 
@@ -36,7 +50,7 @@
 
 \vspace{8cm}
 \begin{center}
-Version 1.0
+Version 2.0
 \end{center}
 
 \newpage
@@ -62,7 +76,7 @@ A detailed physical simulation of was developed using Geant4 (\texttt{hdgeant4} 
 
 \section{Reconstruction}
 
-Three reconstruction approaches are being implemented in the GlueX Software. The geometrical reconstruction is fully implemented and can be used at the beginning of the DIRC operation. The time-based imaging  needs some development effort. The KDE-based reconstruction was very useful for the design work. This method is to be implemented into the software.
+Three reconstruction approaches are being implemented into the GlueX Software. The geometrical reconstruction is fully implemented and can be used at the beginning of the DIRC operation. The time-based imaging  needs some development effort. The KDE-based reconstruction was very useful for the design work. This method is to be implemented into the software.
 
 \input{geometrical}
 
@@ -70,7 +84,7 @@ Three reconstruction approaches are being implemented in the GlueX Software. The
 
 \input{ti}
 
-%\subsection{KDE-based Reconstruction}
+\input{kde}
 
 %\subsection{Comparison of Performance}
 
@@ -90,9 +104,13 @@ Three reconstruction approaches are being implemented in the GlueX Software. The
 \bibitem{pcpaper} D.~Motta, S.~Sch{\"o}nert ``Optical properties of bialkali photocathodes'' NIM \textbf{A} 539 (2005) 217. 
 \bibitem{water} A.~Morel ``Optical properties of Pure Water and Pure Sea Water'', Academic Press, 1974.
 \bibitem{water2} R.~R{\"o}ttgers, ``Measurements of inherent optical properties of pure water'', Technical note, GKSS Forschungszentrum in der Helmholtz Gemeindschaft.
-\bibitem{tdr} GlueX Collaboration, ``GlueX DIRC Technical Design Report'', 2015  
-\bibitem{staric2} M.~Staric et al., ``Pattern recognition for the time-of-propagation counter'', NIM \textbf{A} 639 (2011) 252
+\bibitem{tdr} GlueX Collaboration, ``GlueX DIRC Technical Design Report'', 2015.
+\bibitem{staric2} M.~Staric et al., ``Pattern recognition for the time-of-propagation counter'', NIM \textbf{A} 639 (2011) 252.
 \bibitem{staric3} M.~Static et al., ``Likelihood analysis of patterns in a time-of-propagation (TOP) counter'', NIM \textbf{A} 595 (2008) 252.
+\bibitem{Hardin:2016cvu} J.~Hardin and M.~Williams, ``FastDIRC: a fast Monte Carlo and reconstruction algorithm for DIRC detectors'', JINST 11 (2016).
+\bibitem{hardinGithub}\url{https://github.mit.edu/jmhardin/FastDIRC}.
+\bibitem{hardinWebDists}\url{www.mit.edu/~jmhardin/worklinks/dirc\_distros.html}.
+
 \end{thebibliography}
 
 

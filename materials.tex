@@ -48,11 +48,11 @@ Absorption length as a function of the photon energy (left) and wavelength (righ
 
 \subsubsection*{Epotek 301-2 optical glue}
 
-The BABAR DIRC radiators are glued out of four pieces (see Fig.~\ref{pic:bar}) using Epotek $301-2$~\cite{Epotek} optical glue. The nominal thickness of the glue layer is $d_{glue} = 50 \mu m$. The same glue was used to attach the small wedge and the bar box window. The refraction index for Epotek 301-2 was taken from~\cite{EpotekData}. The absorption length was adopted from ??
+The \babar DIRC radiators are glued out of four pieces (see Fig.~\ref{pic:bar}) using Epotek $301-2$~\cite{Epotek} optical glue. The nominal thickness of the glue layer is $d_{glue} = 50 \mu m$. The same glue was used to attach the small wedge and the bar box window. The refraction index for Epotek 301-2 was taken from~\cite{EpotekData}. The absorption length was adopted from ??
 
 \subsubsection*{Borosilicate glass}
 
-H12700 PMTs can have either borosilicate glass or UV glass. The GlueX DIRC uses H12700 with borosilicate glass. The nominal thickness of the PMT window is $1.5$ mm (see specs sheet). The absorption length from the Schott Borosilicate Crown Glass data sheet is shown in Fig.~\ref{pic:gla}. The transmittance values should be corrected for Fresnel reflection. Fresnel reflection of the air-glass interface can be calculated as:
+H12700 PMTs can have either borosilicate glass or UV glass. The \gluex DIRC uses H12700 with borosilicate glass. The nominal thickness of the PMT window is $1.5$ mm (see specs sheet). The absorption length from the Schott Borosilicate Crown Glass data sheet is shown in Fig.~\ref{pic:gla}. The transmittance values should be corrected for Fresnel reflection. Fresnel reflection of the air-glass interface can be calculated as:
 
 \begin{equation}
 R = \Bigl( \frac{n_1 - n_2}{n_1 + n_2} \Bigr)^{2} = \Bigl( \frac{1.53 - 1}{1.53 + 1} \Bigr) ^{2} \approx 4.4\%,
@@ -143,9 +143,9 @@ There are two OCF-446 layers in the setup: one is between the PMT window and the
 
 According to Ref~\cite{pcpaper}, the photocathode is a thin layer of a multialkali (in our case bialkali) semiconducting alloy, which is evaporated onto the back side of the glass window during production. In the same paper we find, that it is quite difficult to extract properties of the photocathode itself. It can not be studied directly, as it is not chemically stable when exposed to air. Also, its properties might interefere with the birefringence, that is induced on the glass window by the mechanical stress due to the pressure difference (the interiour of the PMT is under vacuum). We use the simplified structure of the PMT: borosilicate window layer followed by a layer of photocathode with the thickness of $0.1$ cm (not realistic, but it does not matter, as our photons anyways get stopped in the photocathode). 
 
-The quantum efficiency function defines properties of the photocathode, when the light is coming from air. For the case when instead of air we have a medium with $n > 1$ (we have the fused silica window with $n = 1.47$, in~\cite{pcpaper} they use scintillator with $n = 1.48$), the authors~\cite{pcpaper} state, that the effective quantum efficiency is slightly increased compared to the one stated in the data sheet. So in the simulation we will use the data sheet quantum efficiency as a conservative estimate. We use a refraction index of $n = 2.7$ to allow Geant4 performs reflection/refraction on the PMT window -- photocathode interface. We use a photocathode absorption length of $0.0001$ cm to stop Cherenkov photons in the photocathode volume.
+The quantum efficiency function defines properties of the photocathode, when the light is coming from air. For the case when instead of air we have a medium with $n > 1$ (we have the fused silica window with $n = 1.47$, in~\cite{pcpaper} they use scintillator with $n = 1.48$), the authors~\cite{pcpaper} state, that the effective quantum efficiency is slightly increased compared to the one stated in the data sheet. So in the simulation we will use the data sheet quantum efficiency as a conservative estimate. We use a refraction index of $n = 2.7$ to allow {\geant}4 performs reflection/refraction on the PMT window -- photocathode interface. We use a photocathode absorption length of $0.0001$ cm to stop Cherenkov photons in the photocathode volume.
 
-%Geant4 needs absorption length $\lambda$ as the following:
+%{\geant}4 needs absorption length $\lambda$ as the following:
 
 %\begin{equation}
 %I = I_{0} \cdot e^{-x/\lambda},
