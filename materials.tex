@@ -23,7 +23,7 @@ RTV615 & $n = 1.406$ & our measurements \\
 \hline
 OCF 446 & $n = 1.46$ & copied from RTV615 \\
 \hline
-Optical air & $n = 1$ & $100$ m, constant \\
+Optical air\footnote{In the simulation the bars are surrounded by air and not by nitrogen, as in reality.} & $n = 1$ & $100$ m, constant \\
 \hline
 \end{tabular}
 \vspace{0.5cm}
@@ -48,11 +48,11 @@ Absorption length as a function of the photon energy (left) and wavelength (righ
 
 \subsubsection*{Epotek 301-2 optical glue}
 
-The \babar DIRC radiators are glued out of four pieces (see Fig.~\ref{pic:bar}) using Epotek $301-2$~\cite{Epotek} optical glue. The nominal thickness of the glue layer is $d_{glue} = 50 \mu m$. The same glue was used to attach the small wedge and the bar box window. The refraction index for Epotek 301-2 was taken from~\cite{EpotekData}. The absorption length was adopted from ??
+The \babar DIRC radiators are glued out of four pieces (see Fig.~\ref{pic:bar}) using Epotek $301-2$~\cite{Epotek} optical glue. The nominal thickness of the glue layer is $d_{glue} = 50 \mu m$. The same glue was used to attach the small wedge and the bar box window. The refraction index for Epotek 301-2 was taken from~\cite{EpotekData}. The absorption length was adopted from~\cite{EpotekData}.
 
 \subsubsection*{Borosilicate glass}
 
-H12700 PMTs can have either borosilicate glass or UV glass. The \gluex DIRC uses H12700 with borosilicate glass. The nominal thickness of the PMT window is $1.5$ mm (see specs sheet). The absorption length from the Schott Borosilicate Crown Glass data sheet is shown in Fig.~\ref{pic:gla}. The transmittance values should be corrected for Fresnel reflection. Fresnel reflection of the air-glass interface can be calculated as:
+H12700 PMTs can have either borosilicate glass or UV glass. The \gluex DIRC uses H12700 with borosilicate glass. The nominal thickness of the PMT window is $1.5$ mm (see spec sheet). The absorption length from the Schott Borosilicate Crown Glass data sheet is shown in Fig.~\ref{pic:gla}. The transmittance values should be corrected for Fresnel reflection. Fresnel reflection of the air-glass interface can be calculated as:
 
 \begin{equation}
 R = \Bigl( \frac{n_1 - n_2}{n_1 + n_2} \Bigr)^{2} = \Bigl( \frac{1.53 - 1}{1.53 + 1} \Bigr) ^{2} \approx 4.4\%,
@@ -65,7 +65,7 @@ R = \Bigl( \frac{n_1 - n_2}{n_1 + n_2} \Bigr)^{2} = \Bigl( \frac{1.53 - 1}{1.53 
 \centering
 \includegraphics[angle=0,width=0.8\textwidth]{pics/glass.png}
 \caption{\label{pic:gla}
-Transmittance for the borosilicate glass (from the data sheet paper).
+Transmittance for the borosilicate glass~\cite{borospec}.
 }
 \end{figure}
 
@@ -97,19 +97,12 @@ The material used to produce cookies is RTV615 by Momentive. The mixing ratio is
 \includegraphics[angle=0,width=0.9\textwidth]{pics/transmittance1.pdf} \\
 \includegraphics[angle=0,width=0.9\textwidth]{pics/cookie10_relQuartz.pdf}
 \caption{\label{pic:coo}
-Transmittance measurements for a set of custom-made silicone cookies. Absolute values (above), and relative to a single quartz window  (below). FCAL cookie is a pre-made cookie by Momentive (same RTV615 material, thickness $2$ mm). The data for TSE 2 mm cookie is taken from a plot on Belle II TOP cookies transmittance, which had poor resolution. The paper mentioned here is SLAC-PUB15942.
+Transmittance measurements for a set of custom-made silicone cookies. Absolute values (top), and relative to a single quartz window  (bottom). FCAL cookie is a pre-made cookie by Momentive (same RTV615 material, thickness $2$ mm). The data for TSE 2 mm cookie is taken from a plot on Belle II TOP cookies transmittance, which had poor resolution. The paper mentioned here is~\cite{slacpub}.
 }
 \end{figure}
 
-The absorption length of the silicone was extracted from the absolute transmittance measurements (see Fig.~\ref{pic:coo} above). Transmittance was measured for the cookie sandwiched between two fused silica windows. Fresnel reflection of the air-fused silica interface can be calculated similarly to~(\ref{eq:fre}) using $n_1 = 1.47$ -- refraction index for fused silica leading to $R = 3.6 \%$. The total reflection loss for a single quartz window in air is then $R_{total} = 7.1 \%$. This estimation agrees with the absolute transmittance of quartz shown in Fig.~\ref{pic:coo} above (we can neglect the absorption inside the FS window). The absorption length for the silicone cookie can be calculated using~(\ref{eq:lam}), and we neglect the Fresnel reflections on the FS-cookie interface, which is about $R = 0.05 \%$.
+The absorption length of the silicone was extracted from the absolute transmittance measurements (see Fig.~\ref{pic:coo} (top)). Transmittance was measured for the cookie sandwiched between two fused silica windows. Fresnel reflection of the air-fused silica interface can be calculated similarly to~(\ref{eq:fre}) using $n_1 = 1.47$, the average refraction index for fused silica, leading to $R = 3.6 \%$. The total reflection loss for a single quartz window in air is then $R_{total} = 7.1 \%$. This estimation agrees with the absolute transmittance of quartz shown in Fig.~\ref{pic:coo} above (we can neglect the absorption inside the FS window). The absorption length for the silicone cookie can be calculated using~(\ref{eq:lam}), and we neglect the Fresnel reflections on the FS-cookie interface, which is about $R = 0.05 \%$.
 
-%To extract absorption length for the silicone cookie, we have to account for the Fresnel reflections of the measured sample. Fresnel reflections on the FS-cookie interface is about $R = 0.05 \%$, so we neglect it. The incident light was partly reflected ($R$), partly absorbed ($A$), and partly transmitted ($T$): $ R_{total} + T + A = 1$. For the absorption lenght $\lambda$ we need $1-A = R_{total}+T = e^{-x/\lambda}$. 
-
-%\begin{equation}
-%\lambda = -x/\log(R_{total}+T) = -0.2/\log(0.071+T),
-%\end{equation}
-
-%\noindent here we assume cookie thickness of 2 mm. 
 The following table shows absorption length for the silicone extracted from the Fig.~\ref{pic:coo} plot:
 
 
@@ -133,17 +126,17 @@ The Nye Lubricants OCF-446 silicone fluid is used to grease the cookies and, the
 \centering
 \includegraphics[angle=270,width=0.7\textwidth]{pics/ocf.pdf}
 \caption{\label{pic:ocf}
-A molecule of OCF-446 silicone fluid.
+A molecule of OCF-446 silicone fluid~\cite{formula}.
 }
 \end{figure}
 
-There are two OCF-446 layers in the setup: one is between the PMT window and the cookie, another one is between the cookie and the window of the optical box. We can calculate the thickness of those layers based on the number of drops used. One drop is about $0.016$ g, density of the fluid is $1.04$ g/cm$^{3}$. Cookie area is $5.2$ cm times $15.8$ cm. I assume we use $2$ drops for the layer between the PMT and the cookie. This results into thickness of $0.0004$ cm. For the second layer we use $2$ drops to grease the cookie, and another $3$ drops to put in the middle of each PMT, which results into layer thickness of $0.00094$ cm. Both layers are introduced into the simulation, and there is no visible effect on the photon yield due to the greasing oil.
+There are two OCF-446 layers in the setup: one is between the PMT window and the cookie, another one is between the cookie and the window of the optical box. We can calculate the thickness of those layers based on the number of drops used. One drop is about $0.016$ g, the density of the fluid is $1.04$ g/cm$^{3}$, the cookie area is $5.2$ cm times $15.8$ cm. The assembly procedure uses $2$ drops for the layer between the PMT and the cookie. This results in an average thickness of $4 \mu m$. For the second layer the assembly procedure uses $2$ drops to grease the cookie, and another $3$ drops to put in the middle of each PMT, which results in an average layer thickness of $94 \mu m$. Both layers are introduced into the simulation, and there is no visible effect on the photon yield due to the greasing oil.
 
 \subsubsection*{Bialkali photocathode}
 
-According to Ref~\cite{pcpaper}, the photocathode is a thin layer of a multialkali (in our case bialkali) semiconducting alloy, which is evaporated onto the back side of the glass window during production. In the same paper we find, that it is quite difficult to extract properties of the photocathode itself. It can not be studied directly, as it is not chemically stable when exposed to air. Also, its properties might interefere with the birefringence, that is induced on the glass window by the mechanical stress due to the pressure difference (the interiour of the PMT is under vacuum). We use the simplified structure of the PMT: borosilicate window layer followed by a layer of photocathode with the thickness of $0.1$ cm (not realistic, but it does not matter, as our photons anyways get stopped in the photocathode). 
+According to Ref~\cite{pcpaper}, the photocathode is a thin layer of a multialkali (in our case bialkali) semiconducting alloy, which is evaporated onto the back side of the glass window during production. In the same paper we find, that it is quite difficult to extract properties of the photocathode itself. It can not be studied directly, as it is not chemically stable when exposed to air. Also, its properties might interefere with the birefringence, that is induced on the glass window by the mechanical stress due to the pressure difference (the interiour of the PMT is under vacuum). We use the simplified structure of the PMT: a borosilicate window layer followed by a layer of photocathode with the thickness of $0.1$ cm (not realistic, but it does not matter, as our photons anyways get stopped in the photocathode). 
 
-The quantum efficiency function defines properties of the photocathode, when the light is coming from air. For the case when instead of air we have a medium with $n > 1$ (we have the fused silica window with $n = 1.47$, in~\cite{pcpaper} they use scintillator with $n = 1.48$), the authors~\cite{pcpaper} state, that the effective quantum efficiency is slightly increased compared to the one stated in the data sheet. So in the simulation we will use the data sheet quantum efficiency as a conservative estimate. We use a refraction index of $n = 2.7$ to allow {\geant}4 performs reflection/refraction on the PMT window -- photocathode interface. We use a photocathode absorption length of $0.0001$ cm to stop Cherenkov photons in the photocathode volume.
+The quantum efficiency function defines properties of the photocathode, when the light is coming from air. For the case when instead of air we have a medium with $n > 1$ (we have the fused silica window with $n = 1.47$, in~\cite{pcpaper} they use scintillator with $n = 1.48$), the authors~\cite{pcpaper} state, that the effective quantum efficiency is slightly increased compared to the one stated in the data sheet. So in the simulation we will use the data sheet quantum efficiency as a conservative estimate. We use a refraction index of $n = 2.7$ to allow {\geant}4 to perform the reflection/refraction on the PMT window -- photocathode interface. We use a photocathode absorption length of $0.0001$ cm to stop Cherenkov photons in the photocathode volume.
 
 %{\geant}4 needs absorption length $\lambda$ as the following:
 
