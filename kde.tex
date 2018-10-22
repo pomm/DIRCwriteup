@@ -1,6 +1,10 @@
 \subsection{KDE-based Reconstruction}
 \label{sec:kde}
 
+\textit{This section is a part of the PhD thesis of John Hardin, therefore, the coordinate systems and notations here are not the same compared to the previous text.}
+
+\vspace{0.5cm}
+
 In order to build a KDE based particle hypothesis PDF, the algorithm must quickly trace many photons from the charged particle path to the detection array.  This provides the $n$ $s_{i}$ in equation~\eqref{eq:kernel_form} in the next section {\em i.e.} it provides the many samples from a PDF required to estimate the PDF with Kernel Density Estimation (KDE).  FastDIRC leverages the symmetry of the bars to trace photons to the detector plane about 10000 times faster than \geant~\cite{Hardin:2016cvu}.
 
 This tracing consists of a generation step, a step that traces through the bars, and a step which traces through the expansion volume.  We use the coordinate system shown in Fig.~\ref{pic:coord}.  The output of FastDIRC is a \deltall which is converted to a resolution as described in Appendix~\ref{app:resolution}.

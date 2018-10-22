@@ -10,7 +10,7 @@ Groups of photons following each trajectory (e.g. blue and purple in Fig.~\ref{p
 
 \begin{figure}[!h]
 \centering
-\includegraphics[clip, trim=0.0cm 0.0cm 0cm 0.3cm,width=0.6\textwidth]{pics/lut3.png}
+\includegraphics[clip, trim=0.5cm 0.0cm 0cm 0.cm,width=0.6\textwidth]{pics/lut3.png}
 \caption{\label{pic:lut1}
 The concept of the geometrical reconstruction. One example Cherenkov photon is emitted by the charged particle. The photon direction $\vec k$ is an estimator of the initial photon direction $\vec k_{init}$ and is used to reconstruct $\theta_{C}$ for this photon (using charged particle direction $\vec p$). 
 %The photon transportation is described in the bar coordinate system, shown in the insert, which differs from the \gluex coordinate system used so far. In that case a reflection off a particular side results into a sign flip of the corresponding photon direction component.
@@ -19,7 +19,7 @@ The concept of the geometrical reconstruction. One example Cherenkov photon is e
 
 \begin{figure}[!h]
 \centering
-\includegraphics[clip, trim=0.cm 0.cm 0cm 0.3cm,width=0.6\textwidth]{pics/lut1.png}
+\includegraphics[clip, trim=0.5cm 0.cm 0cm 0.cm,width=0.6\textwidth]{pics/lut1.png}
 \caption{\label{pic:lut2}
 An illustration of one entry of the look-up table. Two photons with direction vectors $\vec k_{1}$ and $\vec k_{2}$ originate at the center of the bar, propagate throught the optical box, and end up in the same pixel. The look-up table entry corresponding to the shown pixel contains all possible propagation paths, including $\vec k_{1}$ and $\vec k_{2}$, and the associated propagation times in the small wedge and photon camera.
 }
@@ -90,14 +90,14 @@ During reconstruction, the log likelihood values for the reconstructed Cherenkov
 \centering
 \includegraphics[clip, trim=0cm 0cm 0cm 0.7cm, width=0.8\textwidth]{pics/hLnDiff.pdf}
 \caption{\label{pic:sepLUT}
-Log likelihood difference (\deltall) between kaons (red) and pions (blue) with momenta of $4$ {\gev}/c, and direction defined by $\theta = 4$\mydeg and $\phi = 90$\mydeg is 4.95 s.d.
+Log likelihoods for kaons (red) and pions (blue) with momenta of $4$ {\gev}/c, and direction defined by $\theta = 4$\mydeg and $\phi = 90$\mydeg is 4.95 s.d.
 }
 \end{figure}
 
-The separation $S$ between two hypotheses can be calculated based on the difference in log likelihoods (\deltall):
+The separation $S$ between two hypotheses can be calculated based on the difference in log likelihoods:
 
 \begin{equation}
 S = \frac{m_{1}-m_{2}}{(\sigma_{1} + \sigma_{2})/2},
 \end{equation}
 
-\noindent where $m_{1}$ and $m_{2}$ are the mean values of \deltall for two hypotheses, and the denominator shows the average standard deviation assuming the log likelihood distributions are described by Gauss functions with $\sigma_{1}$ and $\sigma_{2}$.
+\noindent where $m_{1}$ and $m_{2}$ are the mean values of log likelihoods for two hypotheses, and the denominator shows the average standard deviation assuming the log likelihood distributions are described by Gauss functions with $\sigma_{1}$ and $\sigma_{2}$.
