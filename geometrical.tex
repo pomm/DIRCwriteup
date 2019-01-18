@@ -54,7 +54,7 @@ Simulated energy spectrum for detected Cherenkov photons. The mean value is $3.3
 
 \begin{figure}[!h]
 \centering
-\includegraphics[clip, trim=0cm 0cm 0cm 0.7cm, width=0.8\textwidth]{pics/hAngle.pdf}
+\includegraphics[clip, trim=0cm 0cm 0cm 0.7cm, width=0.8\textwidth]{pics/hangle_rich18.pdf}
 \caption{\label{pic:spr}
 Cherenkov angles per photon for kaons (red) and pions (blue) with momenta of $4$ {\gev}/c, and direction defined by $\theta = 4$\mydeg and $\phi = 90$\mydeg angles. The solid vertical lines show the expected values for the Cherenkov angles. The dashed lines define the range of values, where the reconstructed photon is considered to be signal (if it also satisfies the cut of time difference). 
 %The values of the reconstructed Cherenkov angle and single photon Cherenkov angle resolution are shown.
@@ -73,7 +73,7 @@ The Cherenkov angle resolution for a track $\sigma_{\theta_{C}}$ can be approxim
 
 \noindent where $\sigma_{tr}$ is the tracking resolution, defined by the tracking system (is estimated to be at the order of $1$ mrad~\cite{tdr}), $\sigma_{C}$ -- single photon Cherenkov angle resolution, $N_{\gamma}$ -- number of detected photons per track (based on the simulation it is expected to be between 30 and 60).
 
-There are two ways to perform the PID with the geometric reconstruction. The first way is to extract the reconstructed Cherenkov angle for a charged particle and compare it to the expected values for different hypotheses. The second method is the direct likelihood test.
+There are two ways to perform the PID with the geometric reconstruction. The first way is to extract the reconstructed Cherenkov angle for a charged particle and compare it to the expected values for different hypotheses. The second method is the direct likelihood test. The GlueX DIRC uses the second method, which is described below.
 
 Log likelihood method of PID compares the measured DIRC signal to the expected signals for different particle hypotheses. In the geometrical reconstruction, each of $N$ hit pixels has a set of $N_{amb}$ Cherenkov angles. The extended log likelihood probability $\log\mathcal{L}$ for a given charged particle hypothesis $h$ ($h = e, \mu, \pi, K, p$) can be defined as~\cite{staric2}:
 
@@ -88,7 +88,7 @@ During reconstruction, the log likelihood values for the reconstructed Cherenkov
 
 \begin{figure}[!h]
 \centering
-\includegraphics[clip, trim=0cm 0cm 0cm 0.7cm, width=0.8\textwidth]{pics/hLnDiff.pdf}
+\includegraphics[clip, trim=0cm 0cm 0cm 0.7cm, width=0.8\textwidth]{pics/hln_rich18.pdf}
 \caption{\label{pic:sepLUT}
 Log likelihoods for kaons (red) and pions (blue) with momenta of $4$ {\gev}/c, and direction defined by $\theta = 4$\mydeg and $\phi = 90$\mydeg is 4.95 s.d.
 }

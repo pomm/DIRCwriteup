@@ -4,24 +4,6 @@ The simulation of the \gluex DIRC detector within the \gluex software is based o
 
 The detector geometry is an important part of the detector simulation. It should represent all main features of the detector and contain all the elements responsible for the detector response. At the same time it should be simple and contain as few geometrical constituents as possible to keep the simulation fast. The \gluex DIRC geometry is shown in Fig.~\ref{pic:dirc}. Each volume is defined by its shape and material (the list of materials for the \gluex simulation is in \texttt{hdds/Material{\_}HDDS.xml}). 
 
-\begin{figure}[!h]
-\centering
-\includegraphics[width=0.8\textwidth]{pics/bars1.png}\\
-\includegraphics[width=0.8\textwidth]{pics/bars2.png}
-\caption{\label{pic:dirc}
-Simulation (top) and CAD drawings (bottom) of the \gluex DIRC. Upstream view.
-}
-\end{figure}  
-
-\begin{figure}[!h]
-\centering
-\includegraphics[width=0.98\textwidth]{pics/DIRC_Geometry11.pdf}\\
-\includegraphics[width=0.98\textwidth]{pics/DIRC_Geometry22.pdf}
-\caption{\label{pic:dirc2}
-Numbering schemes of the DIRC constituents.
-}
-\end{figure}
-
 \vspace{0.5cm}
 Some basic rules for constructing a \geant geometry:
 \begin{itemize}
@@ -35,7 +17,16 @@ Some basic rules for constructing a \geant geometry:
 %\vspace{0.5cm}
 \noindent its full (not half) dimenstions should be set. Here the box has dimensions of 560 cm x 250 cm x 150 cm.
 \item Volumes can be grouped in assemblies called compositions. Inside a composition volumes are located with respect to the center of the composition. When the composition is placed inside the mother-volume, its center is placed with respect to the center of the mother-volume.
-\end{itemize}
+\end{itemize} 
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.98\textwidth]{pics/DIRC_Geometry11.pdf}\\
+\includegraphics[width=0.98\textwidth]{pics/DIRC_Geometry22.pdf}
+\caption{\label{pic:dircNumb}
+Numbering schemes of the DIRC constituents.
+}
+\end{figure}
 
 The DIRC can be activated or deactivated by commenting in/out the corresponding line in the \texttt{main{\_}HDDS.xml} file (lines 82-83): 
 
@@ -48,7 +39,51 @@ The DIRC can be activated or deactivated by commenting in/out the corresponding 
 \vspace{0.5cm}
 
 The \texttt{DIRC} object, which is placed inside the virtual Hall D when the line above is active, is an auxiliary volume in a shape of a rectangular block containing the DIRC detector (see Fig.~\ref{pic:sim}). Its coordinates are defined in the global coordinate system of the hall, in which the $z$ axis goes along the beam, $x$ axis is parallel to the floor, and the $y$ axis is vertical. The target center is at $(0, 0, 65)$ cm. The center of the \texttt{DIRC} volume is at $z = 595$ cm.
-Taking into account the z locations of the daughter volumes \texttt{DRCC} (composition holding the DIRC constituents), \texttt{DCML} (bar box), and \texttt{DCBR} (the radiator bar), the center of the radiator bar is currently at $z = 595 - 40 + 30 =585$ cm downstream the global 0. The distance from the center of the target ($(0, 0, 65)$ cm) is $585 - 65 = 520$ cm. The numbering schemes of individual volumes are represented in Fig.~\ref{pic:dirc2}.
+Taking into account the z locations of the daughter volumes \texttt{DRCC} (composition holding the DIRC constituents), \texttt{DCML} (bar box), and \texttt{DCBR} (the radiator bar), the center of the radiator bar is currently at $z = 595 - 40 + 30 =585$ cm downstream the global 0. The distance from the center of the target ($(0, 0, 65)$ cm) is $585 - 65 = 520$ cm. The numbering schemes of individual volumes are represented in Fig.~\ref{pic:dircNumb}.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=0.9\textwidth]{pics/bars.png}
+\caption{\label{pic:bar}
+Schematic of the DIRC radiator bar in side and top view.
+}
+\end{figure} 
+
+\begin{figure}[!h]
+\centering
+\includegraphics[angle=0,width=0.95\textwidth]{pics/struct3.pdf}
+\caption{\label{pic:struct}
+Schematic of one bar box in projection along the radiator length showing all the materials used for the optical system. Mirrors inside the optical box are omitted. The components are shown not to scale.
+}
+\end{figure}
+
+The structure of the radiator bar is shown in Fig.~\ref{pic:bar}. The mirror at the end of the bar has pressure contact with the fused silica bar, which implies an air gap. In simulation there is an air gap of $0.1$ mm between the mirror and the radiator bar. The schematic of the \gluex DIRC functional optical elements, illustrating different materials used in the simulation, is shown in Fig.~\ref{pic:struct}. 
+The average bar dimensions are $35 \times 17.25 \times 4900 $ mm$^3$. \babar group shared a spreadsheet containing the actual dimensions of the radiators (and sub-radiators) inside every bar box. So that we implemented the real radiator dimensions in the simulation geometry. The spread within each dimension in cm (global c.s.):
+
+\begin{align}
+X &:  [122.41022, 122.4788] \\
+Y &:  [3.31724, 3.49593] \\
+Z &:  [1.57734, 1.71729]
+\end{align}
+
+The real radiators are not identical, and therefore should be aligned. The alignment convention in terms of the global c.s. is the following:
+
+\begin{itemize}
+\item X (along the radiator length): the radiators are aligned at the wedge exit. All the fused silica wedges are exactly the same and all the glue layers (for details see Fig.~\ref{pic:bar} or~\ref{pic:struct}) have the same thickness. As a result, the radiator end equipped with a flat mirror can have slightly different x coordinate.
+\item Y (vertically): the radiators are aligned at the lower edge. The orientation of the bars within the bar box is critical -- the bars should be supported by the rubber buttons (see in black in Fig.~\ref{pic:bar}) at the bottom aligned side to minimize the stress. The \babar DIRC formed a barrel and for different bar boxes the bars were aligned differently to have the bottom flat side. The \babar bar boxes number 00, 01, 10, 11 satisfied the alignment condition for the GlueX arrangement.
+\item Z (along the beam): the radiators are aligned at the downstream side. This is a \babar legacy too: to make sure all the radiators in a barrel shape are at the same radius, they were aligned together with the wedges at the bottom side as shown in e.g. Fig.~\ref{pic:struct}.
+\end{itemize}
+
+Realistic transport of Cherenkov photons through the optical elements of the detector from production to detection is essential for the DIRC simulation. Figures~\ref{pic:dirc} and~\ref{pic:obg} show that the current detector geometry matches the CAD technical drawings.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.8\textwidth]{pics/bars1.png}\\
+\includegraphics[width=0.8\textwidth]{pics/bars2.png}
+\caption{\label{pic:dirc}
+Simulation (top) and CAD drawings (bottom) of the \gluex DIRC. Upstream view.
+}
+\end{figure} 
 
 \begin{figure}[!h]
 \centering
@@ -58,28 +93,14 @@ Geometry of the optical box overlayed with the CAD drawings illustrating the sam
 }
 \end{figure}
 
-Realistic transport of Cherenkov photons through the optical elements of the detector from production to detection is essential for the DIRC simulation. Figures~\ref{pic:dirc} and~\ref{pic:obg} show that the current detector geometry matches the CAD technical drawings.
-
-\begin{figure}[!htb]
-\centering
-\includegraphics[width=0.8\textwidth]{pics/bars.png}
-\caption{\label{pic:bar}
-Schematic of the DIRC radiator bar in side and top view.
-}
-\end{figure} 
-
-The structure of the radiator bar is shown in Fig.~\ref{pic:bar}. The mirror at the end of the bar has pressure contact with the fused silica bar, which implies an air gap. In simulation there is an air gap of $0.1$ mm between the mirror and the radiator bar. The schematic of the \gluex DIRC functional optical elements, illustrating different materials used in the simulation, is shown in Fig.~\ref{pic:struct}. 
-The average bar dimensions are $35 \times 17.25 \times 4900 $ mm$^3$. The real measured bar sizes are being implemented into the geometry. 
-\textcolor{red}{Here about the reaslistic bar size and locations! What is the spread of values? Reasons for implementing the measured values rather than average?...} 
+The photosensors are implemented in a simplified way. One MaPMT is basically a stack of two layers: a borosilicate window and a bialkali photocathode, so that photons sequentially propagate through them (see Fig.~\ref{pic:struct}). The bialkali photocathode is set as a sensitive material for \geant 4, which means, that when a photon enters this volume, a special function is called, which writes out the detector signal. The functionality of the sensitive elements of the \gluex DIRC is described in \texttt{GlueXSensitiveDetectorDIRC} class. All the 6 $\times$ 18 PMTs for each optical box are present in the simulation, which means that in order to account for dummies, one needs to manually mask dummy PMTs. The map of the dummies is shown in Fig.~\ref{pic:dummies}.
 
 \begin{figure}[!h]
 \centering
-\includegraphics[angle=0,width=0.9\textwidth]{pics/struct3.pdf}
-\caption{\label{pic:struct}
-Schematic of one bar box in projection along the radiator length showing all the materials used for the optical system. Mirrors inside the optical box are omitted. The components are shown not to scale.
+\includegraphics[width=0.3\textwidth]{pics/dummies.png}
+\caption{\label{pic:dummies}
+Locations of the dummy blocks (red) on the bottom (south) optical box.
 }
 \end{figure}
 
-The photosensors are implemented in a simplified way. One MaPMT is basically a stack of two layers: a borosilicate window and a bialkali photocathode, so that photons sequentially propagate through them (see Fig.~\ref{pic:struct}). The bialkali photocathode is set as a sensitive material for \geant 4, which means, that when a photon enters this volume, a special function is called, which writes out the detector signal. The functionality of the sensitive elements of the \gluex DIRC is described in \texttt{GlueXSensitiveDetectorDIRC} class.
-
-The support structures located in the acceptance of the DIRC (shown in Fig.~\ref{pic:sim} as purple bars) are included in the simulation. They ensure proper material budget in front of the forward calorimeter.
+The aluminum support structures located in the acceptance of the DIRC (shown in Fig.~\ref{pic:sim} as purple bars) and bar box internal aluminum supports including cross-beams, aluminum sheets and side edges are included in the simulation. They ensure proper material budget in front of the forward calorimeter.
