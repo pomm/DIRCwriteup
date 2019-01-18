@@ -9,13 +9,13 @@ The geometrical reconstruction was moved from the plugin to a JANA factory withi
 
 \subsubsection{Time-Based Imaging}
 
-An essential part of the time-based imaging is the expected timing spectra for individual pixels. As it was discussed in Section~\ref{sec:ti}, these spectra depend on particle direction and velocity, and can be either calculated analytically or simulated.
+An essential part of the time-based imaging is the expected timing spectra for individual pixels (PDFs for individual pixels). As it was discussed in Section~\ref{sec:ti}, these spectra depend on particle direction and velocity, and can be either calculated analytically or simulated.
 
-Analytical calculation of the expected timing spectra for each pixel relies on the angular resolution for the charged track. (add later)
+%Analytical calculation of the expected timing spectra for each pixel relies on the angular resolution for the charged track. (add later)
 
-Simulation of the expected timing spectra for each pixel requires reasonable grid over the phase space. The photon yield depends on the angles of the charged particle with respect to the radiator sides, and the particle momentum. But we will use the (x,y) position on the DIRC wall and momentum coordinates for the phase space.
+%Simulation of the expected timing spectra for each pixel requires reasonable grid over the phase space. The photon yield depends on the angles of the charged particle with respect to the radiator sides, and the particle momentum. But we will use the (x,y) position on the DIRC wall and momentum coordinates for the phase space.
 
-To find out the precision of the track direction and position, which can be reconstructed using the same pdf, a simulation study was performed. A sample of single kaons and pions with momentum of 4 GeV/$c$ and direction defined by the polar angle of $1.4^{\circ}$ and azimuthal angle of $90^{\circ}$ was generated right in front of the DIRC radiator (x = 0, y = -10.4 cm, z = 585.5 cm) and reconstructed using a set of various PFDs. Figure~\ref{pic:simPDF}a shows the resulting separation between pions and kaons when the position of the charged tracks used for PDF was varied. The angle of the tracks used for PDF was kept the same as for the reconstructed sample. Figure~\ref{pic:simPDF}b shows the case when the direction of the tracks used for PDF was varied. In this case the position of the track origin stayed the same as for the reconstructed sample.
+To find out the range of the track directions and positions, which can be reconstructed using the same PDF, two simulation studies were performed. A sample of single kaons and pions with momentum of 4 GeV/$c$ and direction defined by the polar angle of $1.4^{\circ}$ and azimuthal angle of $90^{\circ}$ was generated right in front of the DIRC radiator (x = 0, y = -10.4 cm, z = 585.5 cm) and reconstructed using a set of various PFDs. Figure~\ref{pic:simPDF}a shows the resulting separation between pions and kaons when the position of the charged tracks used for PDF was varied. The angle of the tracks used for PDF was kept the same as for the reconstructed sample. Figure~\ref{pic:simPDF}b shows the case when the direction of the tracks used for PDF was varied. In this case the position of the track origin stayed the same as for the reconstructed sample.
 
 \begin{figure}[!h]
 \centering
