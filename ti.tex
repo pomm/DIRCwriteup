@@ -36,14 +36,6 @@ defined as~\cite{staric2}:
 \noindent where $S_{h} (x_{i}, y_{i}, t_{i})$ is the signal distribution for the hypothesis $h$, i.e. timing spectra for different pixels (see the right column in Fig.~\ref{pic:hitpatKpi}). $B(x_{i}, y_{i}, t_{i})$ is the distribution for background (usually described by a linear function), and $N_{e} = N_{h} + N_{B}$ is the expected number of detected photons, being a sum of the expected number of signal photons $N_{h}$ for hypothesis $h$ and the expected number of background photons, $N_{B}$. The second term in Eq.~\ref{eq:ll} is the Poisson probability to obtain $N$ photons if the mean is $N_{e}$.
 Examples of $N_{e}$ are shown in Fig.~\ref{pic:npho}.
 
-\begin{figure}[!b]
-\centering
-\includegraphics[width=0.8\textwidth]{pics/ll.pdf} \hspace{0.5cm} %\includegraphics[width=0.52\textwidth]{pics/sepTI1000.png}
-\caption{\label{pic:sepTI}
-Log likelihoods for kaons (red) and pions (blue) with momenta of $4$ {\gev}/c, and direction defined by $\theta = 4$\mydeg and $\phi = 90$\mydeg. 
-}
-\end{figure}
-
 The normalizations of $S_{h} (x_{i}, y_{i}, t_{i})$ and $B(x_{i}, y_{i}, t_{i})$ for the log likelihoods are:
 
 \begin{equation}
@@ -59,6 +51,14 @@ The normalizations of $S_{h} (x_{i}, y_{i}, t_{i})$ and $B(x_{i}, y_{i}, t_{i})$
 \noindent where the sum runs over all channels $n_{ch}$ of the photon detector array, $(x_{j}, y_{j})$ being detector coordinates, and the integration is performed over the full range $t_{m}$ of the time-of-arrival measurement.
 
 An example of log likelihoods assuming single photon timing resolution of 1 ns is shown in Fig.~\ref{pic:sepTI}.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.8\textwidth]{pics/ll.pdf} \hspace{0.5cm} %\includegraphics[width=0.52\textwidth]{pics/sepTI1000.png}
+\caption{\label{pic:sepTI}
+Log likelihoods for kaons (red) and pions (blue) with momenta of $4$ {\gev}/c, and direction defined by $\theta = 4$\mydeg and $\phi = 90$\mydeg. 
+}
+\end{figure}
 
 The separation $S$ between two hypotheses can be calculated based on the difference in log likelihoods.
 

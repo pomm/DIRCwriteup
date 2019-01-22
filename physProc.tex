@@ -28,30 +28,44 @@ P \approx  1 - \left( \frac{4\pi \cdot r \cdot \cos(\alpha) \cdot n(\lambda)}{\l
 
 \begin{figure}[!h]
 \centering
-\includegraphics[width=0.8\textwidth]{pics/psurf.png}
+\includegraphics[width=0.95\textwidth]{pics/psurf.png}
 \caption{\label{pic:sur}
 Reflection coefficient $P$ as a function of the wavelength and incident angle of the Cherenkov photon.
 }
 \end{figure}
 
-$P(\lambda,\alpha)$ is illustrated in Fig.~\ref{pic:sur}. The probability to survive the transpotation through the radiator can be calculated as $P_{total} = P^{N}$. Here $P_{total}$ is the transport efficiency for a given photon, and $N$ is the total number of reflections inside the radiator. We used experimental data of the transport efficiency, which agrees with the scalar theory for roughness value of $r \approx 5 A$~\cite{roughness}. Fig.~\ref{pic:tra} illustrates the impact of the transport efficiency on the photon yield for tracks hitting the bar (bar number 24 or 0 in Fig.~\ref{pic:dirc2}) closest to the beamline in different points along the $x$ axis. The effect is larger in the middle and decreases towards the ends of the bar. This correlates with the orientation of the Cherenkov cone inside the radiator: when a charged particle hits the middle of the bar, the Cherenkov cone is oriented perpendicularly to it, and photons have more reflections on the radiator sides than for the case when the charged particle traverses the bar at a more shallow angle.
-
-\begin{figure}[!h]
+\begin{figure}[!b]
 \centering
 \includegraphics[width=0.8\textwidth]{pics/transport.png}
 \caption{\label{pic:tra}
-Impact of the transport efficiency on the photon yield. The study is based on $100k$ of $h'(2600)$ events. The photon yield is shown for the bar closest to the beamline (bar number 24 or 0 in Fig.~\ref{pic:dirc2}).
+Impact of the transport efficiency on the photon yield. The study is based on $100k$ of $h'(2600)$ events. The photon yield is shown for the bar closest to the beamline (bar number 24 or 0 in Fig.~\ref{pic:dircNumb}).
 }
 \end{figure}
 
-The photon sensors are implemented in the simulation as a set of functional layers (see Fig.~\ref{pic:struct}). Propagation of Cherenkov photons through them is handled by {\geant}4. The detection efficiency, represented by the quantum efficiency (QE) of the photosensors (see Fig.~\ref{pic:qe}), is applied at the production stage to avoid tracing photons which are not going to be detected. Currently, the typical QE, same for all the sensors, is implemented. \textcolor{red}{QE values from the JLab scan? How uniform is the QE?} 
+$P(\lambda,\alpha)$ is illustrated in Fig.~\ref{pic:sur}. The probability to survive the transpotation through the radiator can be calculated as $P_{total} = P^{N}$. Here $P_{total}$ is the transport efficiency for a given photon, and $N$ is the total number of reflections inside the radiator. We used experimental data of the transport efficiency, which agrees with the scalar theory for roughness value of $r \approx 5 A$~\cite{roughness}. Fig.~\ref{pic:tra} illustrates the impact of the transport efficiency on the photon yield for tracks hitting the bar closest to the beamline (bar number 24 or 0 in Fig.~\ref{pic:dircNumb}) in different points along the $x$ axis. The effect is larger in the middle and decreases towards the ends of the bar. This correlates with the orientation of the Cherenkov cone inside the radiator: when a charged particle hits the middle of the bar, the axis of the Cherenkov cone is oriented almost perpendicularly to the bar, and photons have more reflections on the radiator sides than for the case when the charged particle traverses the bar at a more shallow angle.
 
-\begin{figure}[tb]
+The photon sensors are implemented in the simulation as a set of functional layers (see Fig.~\ref{pic:struct}). Propagation of Cherenkov photons through them is handled by {\geant}4. The quantum efficiency (QE) of the photosensors (see Fig.~\ref{pic:qe}), is applied at the production stage to avoid tracing photons which are not going to be detected.
+
+\begin{figure}[!h]
 \centering
-\includegraphics[width=0.5\textwidth]{pics/qe.png}
+\includegraphics[width=0.6\textwidth]{pics/qe.png}
 \caption{\label{pic:qe}
-Quantum efficiency of photosensors Hamamatsu H12700. The red line shows a fit to the data points, extracted from the data sheet.
+Quantum efficiency (QE) of photosensors Hamamatsu H12700. The red line shows a fit to the data points, extracted from the data sheet.
 }
 \end{figure}
+
+The ADC spectra for all MaPMT were measured individually using a laser setup with the wavelength of 400 nm to derive the pixel-by-pixel efficiency $\epsilon_{400}$. An example of the ADC spectrum is shown in Fig.~\ref{pic:adc}. The ADC spectra were fitted according to~\cite{deg}. The width of the pedestal, as well as the position of the single photoelectron peak varies between pixels. Alignment of single photoelectron peaks between different pixels by setting a corresponding amplifications (scale factors) allows to use the same threshold value for all MaPMTs. The pixel-by-pixel efficiency $\epsilon_{400}$ can be calculated as the number of photons in the single photoelectron peak divided by the number of incident photons, which is known from the laser settings. The relative pixel-by-pixel efficiency is assumed to be independent on the wavelength, so that  the total detection efficiency is $\epsilon_{400} \times$ QE (see Fig.~\ref{pic:qe}). The effect of $\epsilon_{400}$ is added at the mcsmear stage.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.95\textwidth]{pics/adc.pdf}
+\caption{\label{pic:adc}
+An example of the ADC spectrum for a MaPMT pixel. The pedestal is centered at 0. The fit for the single photoelectron peak, based on~\cite{deg}, is shown in cyan.
+}
+\end{figure}
+
+
+% Currently, the typical QE, same for all the sensors, is implemented. 
+\textcolor{red}{How uniform is the pixel-by-pixel efficiency?}
 
 The deterioration effects caused by imperfections of the physical shape of the radiators are not taken into account. The radiator bars in the detector simulation are perfect parallelepipeds, unlike in reality. Therefore, systematic smearing of the photon direction at every reflection inside the real radiator, which introduces an additional error to the reconstructed photon direction and therefore, to the obtained Cherenkov angle, is not (yet) taken into account.

@@ -70,19 +70,21 @@ This chapter describes the details of the detector simulation, including the geo
 
 \input{geometry.tex}
 
+%\input{pmt.tex}
+
 \input{physProc.tex}
 
 \input{materials.tex}
 
 \input{signal.tex}
 
+\input{led.tex}
+
 \section{Reconstruction}
 
 Three reconstruction approaches are being implemented into the GlueX Software. The geometrical reconstruction is fully implemented and can be used at the beginning of the DIRC operation. The time-based imaging  needs some development effort. The KDE-based reconstruction was very useful for the design work. This method is to be implemented into the software.
 
 \input{geometrical}
-
-%\input{loglikelihoods}
 
 \input{ti}
 
@@ -92,7 +94,7 @@ Three reconstruction approaches are being implemented into the GlueX Software. T
 
 \newpage
 
-\input{comparison}
+\input{comparison.tex}
 
 \newpage
 
@@ -107,6 +109,7 @@ Three reconstruction approaches are being implemented into the GlueX Software. T
 \bibitem{roughness} J.~Cohen-Tanugi et al., ``Optical properties of the DIRC fused silica Cherenkov radiator'', NIM \textbf{A} 515 (2003) 680. 
 \bibitem{Epotek} Epoxy Technology, Inc. 14 Fortune Drive Billerica, MA 01821.
 \bibitem{EpotekData} BABAR DIRC Note 140 ``Measurement of Epotek-301-2 Optical Glue Refraction Index and Reflectivity from Epotek-301-2/Fused Silica Interface'', J. Va'vra (2001).
+\bibitem{deg} P.~Degtyarenko ``Precision analysis of the photomultiplier response to ultra low signals'', NIM \textbf{A} 872 (2017).
 \bibitem{borospec}\url{https://www.schott.com/borofloat/english/attribute/optical/index.html}.
 \bibitem{slacpub} J.~Va'vra ``Optical properties of RICH detectors'', SLAC-PUB-15942 (2014).
 \bibitem{formula}\url{https://www.gelest.com/product/pdv-0331/}.
