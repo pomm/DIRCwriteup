@@ -16,7 +16,7 @@ The physical processes in the materials are simulated by {\geant}4 based on the 
 A fraction of Cherenkov photons emitted by a charged particle, gets trapped inside the radiator due to the total internal reflection effect. They need to be transported from the origin to the readout end of the radiator bar. Cherenkov photons usually undergo about several hundreds internal reflections inside a long \babar DIRC bars on the way towards the readout end. The sides of the radiator in the reality are not perfect, and surface roughness causes a photon to get scattered in a random direction or escape from the radiator. In the simulation the radiator sides are perfectly polished leading to the fraction of transported photons to be $100\%$. In general, there are two ways to implement realistic transport efficiency into the simulation:
 
 \begin{itemize}
-\item The functionality of {\geant}4 (unlike Geant3) allows definition of an ``optical surface'' between two media with custom properties such as reflectivity and roughness. Then at each reflection off the radiator side, {\geant}4 decides according to the surface properties, to stop the photon or continue its transportation. It might be not straightforward to implement experimental results of the surface roughness measurements and make sure the simulation agrees with the measured data.
+\item The functionality of {\geant}4 (unlike {\geant}3) allows definition of an ``optical surface'' between two media with custom properties such as reflectivity and roughness. Then at each reflection off the radiator side, {\geant}4 decides according to the surface properties, to stop the photon or continue its transportation. It might be not straightforward to implement experimental results of the surface roughness measurements and make sure the simulation agrees with the measured data.
 \item Transport efficiency can be calculated at the production stage for each photon based on the reflection probability and the total number of reflections off the sides. This speeds up the simulation. Also, the photon transport efficiency, which includes effects from the surface roughness and sub-surface damage, was experimentally measured for the \babar DIRC bard for several wavelength~\cite{roughness} and is, therefore, easy to implement.
 \end{itemize}
 
@@ -34,7 +34,7 @@ Reflection coefficient $P$ as a function of the wavelength and incident angle of
 }
 \end{figure}
 
-\begin{figure}[!b]
+\begin{figure}[!h]
 \centering
 \includegraphics[width=0.8\textwidth]{pics/transport.png}
 \caption{\label{pic:tra}
@@ -42,7 +42,7 @@ Impact of the transport efficiency on the photon yield. The study is based on $1
 }
 \end{figure}
 
-$P(\lambda,\alpha)$ is illustrated in Fig.~\ref{pic:sur}. The probability to survive the transpotation through the radiator can be calculated as $P_{total} = P^{N}$. Here $P_{total}$ is the transport efficiency for a given photon, and $N$ is the total number of reflections inside the radiator. We used experimental data of the transport efficiency, which agrees with the scalar theory for roughness value of $r \approx 5 A$~\cite{roughness}. Fig.~\ref{pic:tra} illustrates the impact of the transport efficiency on the photon yield for tracks hitting the bar closest to the beamline (bar number 24 or 0 in Fig.~\ref{pic:dircNumb}) in different points along the $x$ axis. The effect is larger in the middle and decreases towards the ends of the bar. This correlates with the orientation of the Cherenkov cone inside the radiator: when a charged particle hits the middle of the bar, the axis of the Cherenkov cone is oriented almost perpendicularly to the bar, and photons have more reflections on the radiator sides than for the case when the charged particle traverses the bar at a more shallow angle.
+$P(\lambda,\alpha)$ is illustrated in Fig.~\ref{pic:sur}. The probability to survive the transpotation through the radiator can be calculated as $P_{total} = P^{N}$. Here $P_{total}$ is the transport efficiency for a given photon, and $N$ is the total number of reflections inside the radiator. We used experimental data of the transport efficiency, which agrees with the scalar theory for roughness value of $r \approx 5 A$~\cite{roughness}. Figure~\ref{pic:tra} illustrates the impact of the transport efficiency on the photon yield for tracks hitting the bar closest to the beamline (bar number 24 or 0 in Fig.~\ref{pic:dircNumb}) in different points along the $x$ axis. The effect is larger in the middle and decreases towards the ends of the bar. This correlates with the orientation of the Cherenkov cone inside the radiator: when a charged particle hits the middle of the bar, the axis of the Cherenkov cone is oriented almost perpendicularly to the bar, and photons have more reflections on the radiator sides than for the case when the charged particle traverses the bar at a more shallow angle.
 
 The photon sensors are implemented in the simulation as a set of functional layers (see Fig.~\ref{pic:struct}). Propagation of Cherenkov photons through them is handled by {\geant}4. The quantum efficiency (QE) of the photosensors (see Fig.~\ref{pic:qe}), is applied at the production stage to avoid tracing photons which are not going to be detected.
 
@@ -54,18 +54,22 @@ Quantum efficiency (QE) of photosensors Hamamatsu H12700. The red line shows a f
 }
 \end{figure}
 
-The ADC spectra for all MaPMT were measured individually using a laser setup with the wavelength of 400 nm to derive the pixel-by-pixel efficiency $\epsilon_{400}$. An example of the ADC spectrum is shown in Fig.~\ref{pic:adc}. The ADC spectra were fitted according to~\cite{deg}. The width of the pedestal, as well as the position of the single photoelectron peak varies between pixels. Alignment of single photoelectron peaks between different pixels by setting a corresponding amplifications (scale factors) allows to use the same threshold value for all MaPMTs. The pixel-by-pixel efficiency $\epsilon_{400}$ can be calculated as the number of photons in the single photoelectron peak divided by the number of incident photons, which is known from the laser settings. The relative pixel-by-pixel efficiency is assumed to be independent on the wavelength, so that  the total detection efficiency is $\epsilon_{400} \times$ QE (see Fig.~\ref{pic:qe}). The effect of $\epsilon_{400}$ is added at the mcsmear stage.
-
 \begin{figure}[!h]
 \centering
-\includegraphics[width=0.95\textwidth]{pics/adc.pdf}
+\includegraphics[width=0.65\textwidth]{pics/adc.pdf}
 \caption{\label{pic:adc}
 An example of the ADC spectrum for a MaPMT pixel. The pedestal is centered at 0. The fit for the single photoelectron peak, based on~\cite{deg}, is shown in cyan.
 }
 \end{figure}
 
+The ADC spectra for all MaPMT were measured individually using a laser setup with the wavelength of 400 nm to derive the pixel-by-pixel efficiency $\epsilon_{400}$. An example of the ADC spectrum is shown in Fig.~\ref{pic:adc} (here the pedestal mean is put in 0). The ADC spectra were fitted according to~\cite{deg}. The width and position of the pedestal, as well as the position of the single photoelectron peak vary between pixels (see Fig.~\ref{pic:effi}a,c,d). Alignment of single photoelectron peaks between different pixels by setting a corresponding amplifications (scale factors) allows to use the same threshold value for all MaPMTs. The pixel-by-pixel efficiency $\epsilon_{400}$ was calculated as the number of photons in the single photoelectron peak divided by the number of incident photons, which is known from the laser settings. Figure~\ref{pic:effi}b shows $\epsilon_{400}$ for all pixels: the distribution is peaking around the mean value, which can be chosen arbitrarily. The pixel-by-pixel efficiency is assumed to be independent on the wavelength, so that  the total detection efficiency is $\epsilon_{400} \times$ QE (see Fig.~\ref{pic:qe}). To add the effect of $\epsilon_{400}$ at the mcsmear stage one needs to forsee the possibility to increase the total efficiency (as $\epsilon_{400}$ can be > 1). For that QE is scaled  by 2 and the mean value of $\epsilon_{400}$ is set to 0.5. The values for individual pixels for $\epsilon_{400}$ are read out from ccdb.
 
-% Currently, the typical QE, same for all the sensors, is implemented. 
-\textcolor{red}{How uniform is the pixel-by-pixel efficiency?}
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.9\textwidth]{pics/effi.png} \put(-320,230){a)} \put(-320,100){c)} \put(-130,230){b)} \put(-130,100){d)}
+\caption{\label{pic:effi}
+ADC spectrum fitting parameters plotted for all pixels: a) scale, which is the location of the single photoelectron peak in ADC counts, b) efficiency of a single pixel, c) pedestal mean value in ADC counts, d) pedestal width in ADC counts.
+}
+\end{figure}
 
 The deterioration effects caused by imperfections of the physical shape of the radiators are not taken into account. The radiator bars in the detector simulation are perfect parallelepipeds, unlike in reality. Therefore, systematic smearing of the photon direction at every reflection inside the real radiator, which introduces an additional error to the reconstructed photon direction and therefore, to the obtained Cherenkov angle, is not (yet) taken into account.
