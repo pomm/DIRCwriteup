@@ -62,14 +62,21 @@ An example of the ADC spectrum for a MaPMT pixel. The pedestal is centered at 0.
 }
 \end{figure}
 
-The ADC spectra for all MaPMT were measured individually using a laser setup with the wavelength of 400 nm to derive the pixel-by-pixel efficiency $\epsilon_{400}$. An example of the ADC spectrum is shown in Fig.~\ref{pic:adc} (here the pedestal mean is put in 0). The ADC spectra were fitted according to~\cite{deg}. The width and position of the pedestal, as well as the position of the single photoelectron peak vary between pixels (see Fig.~\ref{pic:effi}a,c,d). Alignment of single photoelectron peaks between different pixels by setting a corresponding amplifications (scale factors) allows to use the same threshold value for all MaPMTs. The pixel-by-pixel efficiency $\epsilon_{400}$ was calculated as the number of photons in the single photoelectron peak divided by the number of incident photons, which is known from the laser settings. Figure~\ref{pic:effi}b shows $\epsilon_{400}$ for all pixels: the distribution is peaking around the mean value, which can be chosen arbitrarily. The pixel-by-pixel efficiency is assumed to be independent on the wavelength, so that  the total detection efficiency is $\epsilon_{400} \times$ QE (see Fig.~\ref{pic:qe}). To add the effect of $\epsilon_{400}$ at the mcsmear stage one needs to forsee the possibility to increase the total efficiency (as $\epsilon_{400}$ can be > 1). For that QE is scaled  by 2 and the mean value of $\epsilon_{400}$ is set to 0.5. The values for individual pixels for $\epsilon_{400}$ are read out from ccdb.
+The ADC spectra for all MaPMT were measured individually using a laser setup with the wavelength of 400 nm to derive the pixel-by-pixel efficiency $\epsilon_{400}$. An example of the ADC spectrum is shown in Fig.~\ref{pic:adc} (here the pedestal mean is put in 0). The ADC spectra were fitted according to~\cite{deg}. The width and position of the pedestal, as well as the position of the single photoelectron peak vary between pixels (see Fig.~\ref{pic:effi}a,c,d). Alignment of single photoelectron peaks between different pixels by setting a corresponding amplifications (scale factors) allows to use the same threshold value for all MaPMTs. The pixel-by-pixel efficiency $\epsilon_{400}$ was calculated as the number of photons in the single photoelectron peak divided by the number of incident photons, which is known from the laser settings. Figure~\ref{pic:effi}b shows $\epsilon_{400}$ for all pixels: the distribution is peaking around the mean value, which can be chosen arbitrarily. The pixel-by-pixel efficiency is assumed to be independent on the wavelength, so that  the total detection efficiency is $\epsilon_{400} \times$ QE (see Fig.~\ref{pic:qe}). To add the effect of $\epsilon_{400}$ at the mcsmear stage one needs to forsee the possibility to increase the total efficiency (as $\epsilon_{400}$ can be > 1). For that QE is scaled  by 2 and the mean value of $\epsilon_{400}$ is set to 0.5. The values for individual pixels for $\epsilon_{400}$ shown in Fig.~\ref{pic:effmap} are read out from ccdb.
 
 \begin{figure}[!h]
 \centering
 \includegraphics[width=0.9\textwidth]{pics/effi.png} \put(-320,230){a)} \put(-320,100){c)} \put(-130,230){b)} \put(-130,100){d)}
 \caption{\label{pic:effi}
-ADC spectrum fitting parameters plotted for all pixels: a) scale, which is the location of the single photoelectron peak in ADC counts, b) efficiency of a single pixel, c) pedestal mean value in ADC counts, d) pedestal width in ADC counts.
+ADC spectrum fitting parameters plotted for all pixels: a) location of the single photoelectron peak in ADC counts (``scale''), b) efficiency of a single pixel, c) pedestal mean value in ADC counts, d) pedestal width in ADC counts.
 }
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.8\textwidth]{pics/EfficMap.pdf}
+\caption{\label{pic:effmap}
+The efficiency map for all pixels as a function of pixel number along the x and y axes of the photodetection plane coordinates (see Fig.~\ref{pic:dircNumb}).}
 \end{figure}
 
 The deterioration effects caused by imperfections of the physical shape of the radiators are not taken into account. The radiator bars in the detector simulation are perfect parallelepipeds, unlike in reality. Therefore, systematic smearing of the photon direction at every reflection inside the real radiator, which introduces an additional error to the reconstructed photon direction and therefore, to the obtained Cherenkov angle, is not (yet) taken into account.

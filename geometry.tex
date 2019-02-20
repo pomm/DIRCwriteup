@@ -21,10 +21,10 @@ Some basic rules for constructing a \geant geometry:
 
 \begin{figure}[!h]
 \centering
-\includegraphics[width=0.98\textwidth]{pics/DIRC_Geometry11.pdf}\\
-\includegraphics[width=0.98\textwidth]{pics/DIRC_Geometry22.pdf}
+\includegraphics[width=0.9\textwidth]{pics/DIRC_Geometry11.pdf}\\
+\includegraphics[width=0.9\textwidth]{pics/DIRC_Geometry22.pdf}
 \caption{\label{pic:dircNumb}
-Numbering schemes of the DIRC constituents.
+Numbering schemes of the DIRC constituents. The global GlueX coordinates are shown in black, and the local photodetection plane coordinates are shown in red.
 }
 \end{figure}
 
@@ -78,7 +78,7 @@ The \babar bar boxes number 00, 01, 10, 11 satisfied the alignment condition for
 
 The glue layers in (y,z) plane match the size of the larger bar/wedge. The size of the air gap in (y,z) between the radiator and the flat mirror matches the size of the radiator.
 
-Realistic transport of Cherenkov photons through the optical elements of the detector from production to detection is essential for the DIRC simulation. Figures~\ref{pic:dirc} and~\ref{pic:obg} show that the current detector geometry matches the CAD technical drawings.
+Realistic transport of Cherenkov photons through the optical elements of the detector from production to detection is essential for the DIRC simulation. Figures~\ref{pic:dirc} and~\ref{pic:obg} show that the current detector geometry matches the CAD technical drawings. After the ideal positions of the DIRC bar boxes and optical boxes were implemented into the simulation, the locations of the DIRC constituents (bar boxes and optical boxes) were tuned to match the as-built geometry (according to a survey performed in the hall after the DIRC was assembled and put in place).
 
 \begin{figure}[!h]
 \centering
@@ -97,13 +97,21 @@ Geometry of the optical box overlayed with the CAD drawings illustrating the sam
 }
 \end{figure}
 
-The photosensors are implemented in a simplified way. One MaPMT is basically a stack of two layers: a borosilicate window and a bialkali photocathode, so that photons sequentially propagate through them (see Fig.~\ref{pic:struct}). The bialkali photocathode is set as a sensitive material for \geant 4, which means, that when a photon enters this volume, a special function is called, which writes out the detector signal. The functionality of the sensitive elements of the \gluex DIRC is described in \texttt{GlueXSensitiveDetectorDIRC} class. All the 6 $\times$ 18 PMTs for each optical box are present in the simulation, which means that in order to account for dummies, one needs to manually mask those PMTs. The map of the dummies for the Spring 2019 run is shown in Fig.~\ref{pic:dummies}.
+The structure of the optical box in the simulation is shown in Fig.~\ref{pic:obg}: the mirrors and the readout block are located inside a box-like water-filled volume. Figure~\ref{pic:pmt_struct} shows the stack of volumes, which form the readout block. Photons come from the top right corner and first enter the fused silica window of the optical box, then propagate through the optical coupling consisting of a silicone cookie greased by the oil on both sides (the oil layers are too thin to be visible). After that photons enter the photosensors, which are implemented in a simplified way. One MaPMT is basically a stack of two layers: a borosilicate window and a bialkali photocathode. In xy coordinates of the  photodetection plane one cookie matches 3 MaPMT windows. The gaps between neighboring MaPMTs are around 1-2 mm. The bialkali photocathode for each MaPMT form an array of 8 x 8 pixels, where each pixels is set as sensitive for {\geant}4, which means that when a photon enters this volume, a special function is called, which writes out the detector signal. The functionality of the sensitive elements of the \gluex DIRC is described in \texttt{GlueXSensitiveDetectorDIRC} class. All the 6 $\times$ 18 PMTs for each optical box are present in the simulation, which means that in order to account for dummies, one needs to manually mask those PMTs. The map of the dummies for the Spring 2019 run is shown in Fig.~\ref{pic:dummies}.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.6\textwidth]{pics/pmt_struct.png}
+\caption{\label{pic:pmt_struct}
+Structure of the readout block in the simulation: an 1/2 inch thick fused silica window of the optical box (light green) followed by the optical coupling, which is a 2 mm silicone cookie greased on both sides (dark green), and an array of MaPMTs consisting of 1.5 mm thick borosilicate window and an array of 0.1 mm thick photocathode pixels (both violet). The readout block is immersed in water.
+}
+\end{figure}
 
 \begin{figure}[!h]
 \centering
 \includegraphics[width=0.3\textwidth]{pics/dummies.png}
 \caption{\label{pic:dummies}
-Locations of the dummy blocks (red) on the bottom (South) optical box for the 2019 Spring run, which is the technical run for the DIRC.
+Locations of the dummy blocks (red) on the bottom (South) optical box for the 2019 Spring run, which is the technical run for the DIRC. The cyan circle on one of the bottom MaPMT shows an air bubble, which remained after the installation of the photosensors. The size of the bubble is approximately matches the four middle pixels.
 }
 \end{figure}
 

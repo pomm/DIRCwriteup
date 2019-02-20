@@ -50,6 +50,18 @@ Absorption length as a function of the photon energy (left) and wavelength (righ
 
 The \babar DIRC radiators are glued out of four pieces (see Fig.~\ref{pic:bar}) using Epotek $301-2$~\cite{Epotek} optical glue. The nominal thickness of the glue layer is $d_{glue} = 50 \mu m$. The same glue was used to attach the small wedge and the bar box window. The refraction index for Epotek 301-2 was taken from~\cite{EpotekData}. The absorption length was adopted from~\cite{EpotekData}.
 
+\subsubsection*{Mirrors reflectivity}
+
+The reflectivity of the mirrors inside the optical box was measured at JLab. The measured data exists in the range [325, 600] nm and was linerarly extrapolated to cover the relevant wavelengths for Cherenkov photons [280, 800] nm.  The reflectivity of the mirror at the far radiator end is left as is in the simulation (was implemented before). Figure~\ref{pic:mirr} shows reflectivity for both types of mirrors as a function of the photons energy and wavelength.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[angle=0,width=0.95\textwidth]{pics/mirrReflectivity.pdf}
+\caption{\label{pic:mirr}
+Reflectivity for the mirrors inside the optical box (green) and the mirror at the far end of the radiators (blue). Dependency on the photon energy is shown on the left, and on the wavelength on the right. 
+}
+\end{figure}
+
 \subsubsection*{Borosilicate glass}
 
 H12700 PMTs can have either borosilicate glass or UV glass. The \gluex DIRC uses H12700 with borosilicate glass. The nominal thickness of the PMT window is $1.5$ mm (see spec sheet). The absorption length from the Schott Borosilicate Crown Glass data sheet is shown in Fig.~\ref{pic:gla}. The transmittance values should be corrected for Fresnel reflection. Fresnel reflection of the air-glass interface can be calculated as:
